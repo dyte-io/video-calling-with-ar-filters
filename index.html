@@ -33,20 +33,20 @@
         },
     });
 
-    const deepAR = await deepar.initialize({
-        licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
-        canvas: meeting.self.videoElement,
-        effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
-    });
+    // const deepAR = await deepar.initialize({
+    //     licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
+    //     canvas: meeting.self.videoElement,
+    //     effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
+    // });
 
-    // Add DeepAR effect as a video middleware
-    function DeepARVideoEffect() {
-        // console.log('Adding DeepAR effect');
-        return (canvas, ctx) => {
-            ctx.drawImage(deepAR.canvas, 0, 0, canvas.width, canvas.height);
-        };
-    }
-      meeting.self.addVideoMiddleware(DeepARVideoEffect);
+    // // Add DeepAR effect as a video middleware
+    // function DeepARVideoEffect() {
+    //     // console.log('Adding DeepAR effect');
+    //     return (canvas, ctx) => {
+    //         ctx.drawImage(deepAR.canvas, 0, 0, canvas.width, canvas.height);
+    //     };
+    // }
+    //   meeting.self.addVideoMiddleware(DeepARVideoEffect);
 
       document.getElementById('my-meeting').meeting = meeting;
     };
