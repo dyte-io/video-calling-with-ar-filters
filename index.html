@@ -45,7 +45,9 @@
                 effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
             });
 
-            ctx.drawImage(deepAR, 0, 0, canvas.width, canvas.height);
+            const Filter = deepAR.getEffect('Aviators');
+
+            ctx.drawImage(Filter, 0, 0, canvas.width, canvas.height);
         };
     }
 
