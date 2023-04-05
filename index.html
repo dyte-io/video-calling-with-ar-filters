@@ -16,10 +16,12 @@
     <script src="https://cdn.jsdelivr.net/npm/deepar/js/deepar.js"> </script>
 </head>
 <body>
-    <dyte-meeting id="my-meeting"></dyte-meeting>
+    <dyte-meeting id="my-meeting">
+        <canvas id="deepar-canvas"></canvas>
+    </dyte-meeting>
 
     <!-- Canvas element for AR preview -->
-    <!-- <canvas width="1520" height="801" id="deepar-canvas"></canvas> -->
+
     <!-- Initialize DeepAR and load AR effect/filter -->
 
     <script>
@@ -33,7 +35,7 @@
         },
     });
 
-    const canvas = document.getElementById('my-meeting');
+    const canvas = document.getElementById('deepar-canvas');
     canvas.width = window.innerWidth > window.innerHeight ? Math.floor(window.innerHeight * 0.66) : window.innerWidth;
     canvas.height = window.innerHeight;
 
