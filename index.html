@@ -45,8 +45,20 @@
         effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
     });
 
+    function RetroTheme() {
+        return (canvas, ctx) => {
+            ctx.filter = 'grayscale(1)';
+            ctx.shadowColor = '#000';
+            ctx.shadowBlur = 20;
+            ctx.lineWidth = 50;
+            ctx.strokeStyle = '#000';
+            ctx.strokeRect(0, 0, canvas.width, canvas.height);
+        };
+    }
 
-      document.getElementById('my-meeting').meeting = meeting;
+    meeting.self.addVideoMiddleware(RetroTheme);
+
+    document.getElementById('my-meeting').meeting = meeting;
     };
 
     init();
