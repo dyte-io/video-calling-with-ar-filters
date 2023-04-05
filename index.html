@@ -35,21 +35,18 @@
 
     const deepAR = await deepar.initialize({
         licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
+        canvas: meeting.self.videoElement,
         effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
     });
 
-    const canvas = meeting.video.stream.canvas;
-    meeting.video.addEffect(() => {
+    // Add DeepAR effect as a video middleware
+    function DeepARVideoEffect() {
+        // console.log('Adding DeepAR effect');
         return (canvas, ctx) => {
-          deepAR.draw(canvas);
-          ctx.filter = 'grayscale(1)';
-          ctx.shadowColor = '#000';
-          ctx.shadowBlur = 20;
-          ctx.lineWidth = 50;
-          ctx.strokeStyle = '#000';
-          ctx.strokeRect(0, 0, 1520, 800);
+            ctx.drawImage(deepAR.canvas, 0, 0, canvas.width, canvas.height);
         };
-    });
+    }
+      meeting.self.addVideoMiddleware(DeepARVideoEffect);
 
       document.getElementById('my-meeting').meeting = meeting;
     };
