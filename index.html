@@ -51,26 +51,19 @@
                 
                 return async (canvas, ctx) => {
 
-                    // ctx.drawImage(frame, 0, 0, canvas.width, canvas.height);
-
-                    // const filter = deepAR.getEffect('https://cdn.jsdelivr.net/npm/deepar/effects/aviators');
-
-                    // deepAR.draw(filter, 0, 0, canvas.width, canvas.height);
-
-                    // deepAR.draw(filter, ctx, canvas.width, canvas.height);
-
                     const deepAR = await deepar.initialize({
                         licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
                         canvas: canvas,
                         effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
                     });
 
-                    ctx.draw(filter, 0, 0, canvas.width, canvas.height);
+                    // ctx.draw(filter, 0, 0, canvas.width, canvas.height);
 
                 };
             }
 
-            RetroTheme;
+            RetroTheme(canvas, ctx)
+            
         // meeting.self.addVideoMiddleware(RetroTheme);
 
         // document.getElementById('my-meeting').meeting = meeting;
