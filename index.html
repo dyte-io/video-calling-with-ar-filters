@@ -59,7 +59,13 @@
             });
         }
 
-        AR();
+        const existCondition = setInterval(function() {
+        if (document.getElementsByClassName('cover').length) {
+            console.log("Exists!");
+            clearInterval(existCondition);
+            doTheRestOfTheStuff(AR());
+        }
+        }, 100);
     </script>
 </body>
 </html>
