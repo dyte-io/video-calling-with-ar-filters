@@ -27,7 +27,7 @@
     </dyte-meeting>
 
     <!-- Canvas element for AR preview -->
-    
+    <canvas id="deepar-canvas"></canvas>
     <!-- Initialize DeepAR and load AR effect/filter -->
 
     <script>
@@ -41,18 +41,28 @@
                 },
             });
 
+            const deepAR = await deepar.initialize({
+                licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
+                canvas: document.getElementById('deepar-canvas'),
+                effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
+            });
+
             function RetroTheme() {
+                
             return async (canvas, ctx) => {
-                const deepAR = await deepar.initialize({
-                    licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
-                    canvas: canvas,
-                    effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
-                });
+                // const deepAR = await deepar.initialize({
+                //     licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
+                //     canvas: canvas,
+                //     effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
+                // });
 
                 const filter = deepAR.getEffect('https://cdn.jsdelivr.net/npm/deepar/effects/aviators');
 
                 ctx.draw(filter, 0, 0, canvas.width, canvas.height);
+
             };
+
+            
         }
 
 
