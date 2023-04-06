@@ -27,7 +27,7 @@
     </dyte-meeting>
 
     <!-- Canvas element for AR preview -->
-    <!-- <canvas width="1520" height="800" id="deepar-canvas"></canvas> -->
+    <canvas id="deepar-canvas"></canvas>
     <!-- Initialize DeepAR and load AR effect/filter -->
 
     <script>
@@ -41,13 +41,15 @@
                 },
             });
 
-            async function myFunction(canvas) {
+            
                 const deepAR = await deepar.initialize({
                     licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
-                    canvas: canvas,
+                    canvas: document.getElementById('deepar-canvas'),
                     effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
                 }); 
-            }
+
+                console.log(deepAR)
+            
 
             // function RetroTheme() {
                 
@@ -58,7 +60,7 @@
             //     };
             // }
             
-            meeting.self.addVideoMiddleware(myFunction);
+            // meeting.self.addVideoMiddleware(myFunction);
 
             document.getElementById('my-meeting').meeting = meeting;
         };
