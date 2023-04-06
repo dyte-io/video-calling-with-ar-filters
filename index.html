@@ -31,7 +31,7 @@
     <!-- Initialize DeepAR and load AR effect/filter -->
 
     <script>
-        const video = document.querySelector('.cover').style.display = "none";
+        const video = document.getElementsByClassName('cover')[0].style.display = "none";
 
         const canvas = document.getElementById("deepar-canvas");
         canvas.width = video.videoWidth;
