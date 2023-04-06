@@ -55,7 +55,12 @@
                 //     canvas: canvas,
                 //     effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
                 // });
+                deepAR.startCamera();
 
+                const frame = deepAR.getRenderedFrame();
+
+                ctx.drawImage(frame, 0, 0, canvas.width, canvas.height);
+                
                 const filter = deepAR.getEffect('https://cdn.jsdelivr.net/npm/deepar/effects/aviators');
 
                 deepAR.draw(filter, ctx, canvas.width, canvas.height);
