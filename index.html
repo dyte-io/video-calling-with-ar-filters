@@ -22,18 +22,18 @@
     </style>
 </head>
 <body>
-    <!-- <dyte-meeting id="my-meeting" class="hidden">
+    <dyte-meeting id="my-meeting">
     
-    </dyte-meeting> -->
+    </dyte-meeting>
 
     <!-- Canvas element for AR preview -->
-    <canvas id="deepar-canvas"></canvas>
+    <canvas id="deepar-canvas" style="display: none;"></canvas>
     <!-- Initialize DeepAR and load AR effect/filter -->
 
     <script>
-        // const canvas = document.createElement("canvas");
-        // canvas.width = 1280;
-        // canvas.height = 720;
+        const DeepARcanvas = document.getElementById("deepar-canvas");
+        canvas.width = 1280;
+        canvas.height = 720;
 
         const init = async () => {
             const meeting = await DyteClient.init({
@@ -45,22 +45,31 @@
             });
 
             
-                const deepAR = await deepar.initialize({
-                    licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
-                    canvas: document.getElementById("deepar-canvas"),
-                    effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
-                }); 
+            const deepAR = await deepar.initialize({
+                licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
+                canvas: DeepARcanvas,
+                effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
+            }); 
 
-                // console.log(meeting)
+            const loadLogo = (url) => {
+                    return new Promise((resolve) => {
+                        const image = new Image();
+                        image.src = url;
+                        image.onload = () => {
+                            resolve(image);
+                        }
+                        image.crossOrigin = true;
+                    });
+            }
             
 
             function RetroTheme() {
                 
                 return async (canvas, ctx) => {
 
-                    const filter = await deepAR.switchEffect(0, "aviators", "https://cdn.jsdelivr.net/npm/deepar/effects/aviators", {})
+                    const logo = await deepAR.switchEffect('https://cdn.jsdelivr.net/npm/deepar/effects/aviators');;
 
-                    ctx.drawImage(filter, 0, 0, canvas.width, canvas.height)
+                    ctx.drawImage(logo, 0, 0, canvas.width, canvas.height)
 
                 };
             }
