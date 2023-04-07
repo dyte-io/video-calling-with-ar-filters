@@ -32,8 +32,8 @@
 
     <script>
         const DeepARcanvas = document.getElementById("deepar-canvas");
-        canvas.width = 1280;
-        canvas.height = 720;
+        DeepARcanvas.width = 1280;
+        DeepARcanvas.height = 720;
 
         const init = async () => {
             const meeting = await DyteClient.init({
