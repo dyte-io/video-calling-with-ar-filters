@@ -63,19 +63,23 @@
             }
             
 
-            function RetroTheme() {
+            // function RetroTheme() {
                 
-                return async (canvas, ctx) => {
+            //     return async (canvas, ctx) => {
 
-                    const logo = await deepAR;
+            //         const logo = await deepAR;
 
-                    ctx.drawImage(logo, 0, 0, canvas.width, canvas.height)
+            //         ctx.drawImage(logo, 0, 0, canvas.width, canvas.height)
 
-                    console.log(logo);
-                };
-            }
+            //         console.log(logo);
+            //     };
+            // }
             
-            meeting.self.addVideoMiddleware(RetroTheme);
+            // meeting.self.addVideoMiddleware(RetroTheme);
+
+            const video = meeting.self.videoTrack()
+
+            meeting.self.videoTrack() = deepAR.setVideoElement(video, true);
 
             document.getElementById('my-meeting').meeting = meeting;
         };
