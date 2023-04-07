@@ -67,7 +67,7 @@
                 
                 return async (canvas, ctx) => {
 
-                    const logo = await loadLogo(deepAR);
+                    const logo = await deepAR;
 
                     ctx.drawImage(logo, 0, 0, canvas.width, canvas.height)
 
