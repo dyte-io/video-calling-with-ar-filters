@@ -22,24 +22,24 @@
     </style>
 </head>
 <body>
-    <!-- <dyte-meeting id="my-meeting">
+    <dyte-meeting id="my-meeting">
     
-    </dyte-meeting> -->
+    </dyte-meeting>
 
     <!-- Canvas element for AR preview -->
-    <canvas id="deepar-canvas" width="1520" height="820"></canvas>
+    <!-- <canvas id="deepar-canvas" width="1520" height="820"></canvas> -->
     <!-- Initialize DeepAR and load AR effect/filter -->
 
     <script>
 
         const init = async () => {
-            // const meeting = await DyteClient.init({
-            //     authToken: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdJZCI6ImRkZjU3YzBmLTFkM2UtNDdmZS1iNmE1LWEwNmM3NDIwMTVhMCIsIm1lZXRpbmdJZCI6ImJiYmJmZTNlLWEyYjYtNGMzNy05ZTIzLWNmYzkzMWM1Y2E3OSIsInBhcnRpY2lwYW50SWQiOiJhYWFlNWY5Mi1mZmYwLTQ2MzItOTdiNy0xOWQ2ZDVmOTE1NTgiLCJwcmVzZXRJZCI6IjM4NzI3NWEwLTBmZTgtNDAyOC05ZDkwLTNhNWYxOTc1M2ZiZCIsImlhdCI6MTY4MDY0MzIwMSwiZXhwIjoxNjg5MjgzMjAxfQ.mmspLJ64kpmKnJGLKKQmQsYBV1r0PdjKRwwUM0UgirkODlqPp2hDb3Ip3MHf7Uy_OdUqeaxbBAwiUzHJZvJ54M2i9RrGqCdaWploG1BbKUiM_A0SHC7OjmO_rrU9M529gAaQla7o9HWP-EBFQfLybO_5Ml6Y9oAcj6P4p-CZtKHnUGynyeV8UKzrR0tIouIDNzoiaEXrkVEz4ryL9BhklZ4Y3CQ701PC-PREF_MrcXSNjep934aXGD-sZ706T5GaW9N21IrslFqSdq8rasJ4CJsClQsaPMpqf6uToV-V2H1EM9Q0hN_WinNc6P_1H3jq5WBBqxGwrruvwGGGqxvhrg',
-            //     defaults: {
-            //     audio: true,
-            //     video: true,
-            //     },
-            // });
+            const meeting = await DyteClient.init({
+                authToken: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdJZCI6ImRkZjU3YzBmLTFkM2UtNDdmZS1iNmE1LWEwNmM3NDIwMTVhMCIsIm1lZXRpbmdJZCI6ImJiYmJmZTNlLWEyYjYtNGMzNy05ZTIzLWNmYzkzMWM1Y2E3OSIsInBhcnRpY2lwYW50SWQiOiJhYWFlNWY5Mi1mZmYwLTQ2MzItOTdiNy0xOWQ2ZDVmOTE1NTgiLCJwcmVzZXRJZCI6IjM4NzI3NWEwLTBmZTgtNDAyOC05ZDkwLTNhNWYxOTc1M2ZiZCIsImlhdCI6MTY4MDY0MzIwMSwiZXhwIjoxNjg5MjgzMjAxfQ.mmspLJ64kpmKnJGLKKQmQsYBV1r0PdjKRwwUM0UgirkODlqPp2hDb3Ip3MHf7Uy_OdUqeaxbBAwiUzHJZvJ54M2i9RrGqCdaWploG1BbKUiM_A0SHC7OjmO_rrU9M529gAaQla7o9HWP-EBFQfLybO_5Ml6Y9oAcj6P4p-CZtKHnUGynyeV8UKzrR0tIouIDNzoiaEXrkVEz4ryL9BhklZ4Y3CQ701PC-PREF_MrcXSNjep934aXGD-sZ706T5GaW9N21IrslFqSdq8rasJ4CJsClQsaPMpqf6uToV-V2H1EM9Q0hN_WinNc6P_1H3jq5WBBqxGwrruvwGGGqxvhrg',
+                defaults: {
+                audio: true,
+                video: true,
+                },
+            });
 
             
             const deepAR = await deepar.initialize({
@@ -60,25 +60,25 @@
             // }
             
 
-            // function RetroTheme() {
+            function RetroTheme() {
                 
-            //     return async (canvas, ctx) => {
-
-            //         const logo = await deepAR;
-
-            //         ctx.drawImage(logo, 0, 0, canvas.width, canvas.height)
-
-            //         console.log(logo);
-            //     };
-            // }
+                return async (canvas, ctx) => {
+                    const deepAR = await deepar.initialize({
+                        licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
+                        canvas: canvas,
+                        effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
+                    }); 
+                    
+                };
+            }
             
-            // meeting.self.addVideoMiddleware(RetroTheme);
+            meeting.self.addVideoMiddleware(RetroTheme);
 
             // const video = meeting.self.videoTrack()
 
             // meeting.self.videoTrack() = deepAR.setVideoElement(video, true);
 
-            // document.getElementById('my-meeting').meeting = meeting;
+            document.getElementById('my-meeting').meeting = meeting;
         };
 
         init();
