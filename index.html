@@ -14,12 +14,6 @@
     <script src="https://cdn.dyte.in/core/dyte-1.10.0.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/deepar/js/deepar.js"> </script>
-
-    <style>
-        .hidden {
-            display: none;
-        }
-    </style>
 </head>
 <body>
     <dyte-meeting id="my-meeting">
@@ -40,29 +34,12 @@
                 video: true,
                 },
             });
-
-            
-            const deepAR = await deepar.initialize({
-                licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
-                canvas: document.getElementById('deepar-canvas'),
-                effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators'
-            }); 
-
-            // const loadLogo = (url) => {
-            //         return new Promise((resolve) => {
-            //             const image = new Image();
-            //             image.src = url;
-            //             image.onload = () => {
-            //                 resolve(image);
-            //             }
-            //             image.crossOrigin = true;
-            //         });
-            // }
             
 
             function RetroTheme() {
                 
                 return async (canvas, ctx) => {
+
                     const deepAR = await deepar.initialize({
                         licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
                         canvas: canvas,
@@ -73,10 +50,6 @@
             }
             
             meeting.self.addVideoMiddleware(RetroTheme);
-
-            // const video = meeting.self.videoTrack()
-
-            // meeting.self.videoTrack() = deepAR.setVideoElement(video, true);
 
             document.getElementById('my-meeting').meeting = meeting;
         };
