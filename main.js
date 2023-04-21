@@ -7,44 +7,71 @@ const init = async () => {
       },
     });
 
-    async function RetroTheme() {
-        let lastProcessedImage  = null;
-        const intermediatoryCanvas = document.createElement('canvas');
-        intermediatoryCanvas.width = 640;
-        intermediatoryCanvas.height = 480;
-        const  intermediatoryCanvasCtx = intermediatoryCanvas.getContext('2d');
+    meeting.self.on('roomJoined', () => {
+        const btn = document.getElementById('dyte-el');
+        btn.style.visibility = "visible";
 
-        const deepARCanvas = document.createElement('canvas');
-        deepARCanvas.width = 680;
-        deepARCanvas.height = 480;
+        var count = 0;
 
-        const deepAR = await deepar.initialize({
-            licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
-            canvas: deepARCanvas,
-            effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators',
-            additionalOptions: {
-                cameraConfig: {
-                    disableDefaultCamera: true
+        btn.addEventListener("click", myFunction)
+
+        function myFunction() {
+
+            async function RetroTheme() {
+                let lastProcessedImage  = null;
+                const intermediatoryCanvas = document.createElement('canvas');
+                intermediatoryCanvas.width = 640;
+                intermediatoryCanvas.height = 480;
+                const  intermediatoryCanvasCtx = intermediatoryCanvas.getContext('2d');
+        
+                const deepARCanvas = document.createElement('canvas');
+                deepARCanvas.width = 680;
+                deepARCanvas.height = 480;
+        
+                const deepAR = await deepar.initialize({
+                    licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
+                    canvas: deepARCanvas,
+                    effect: 'https://cdn.jsdelivr.net/npm/deepar/effects/aviators',
+                    additionalOptions: {
+                        cameraConfig: {
+                            disableDefaultCamera: true
+                        }
+                    }
+                });
+        
+                return async (canvas, ctx) => {
+                    intermediatoryCanvasCtx.drawImage(canvas, 0, 0);
+                    if(lastProcessedImage){
+                        ctx.drawImage(lastProcessedImage, 0, 0, lastProcessedImage.width, lastProcessedImage.height, 0, 0, canvas.width, canvas.height);
+                    }
+                    await deepAR.processImage(intermediatoryCanvas);
+                    await deepAR.processImage(intermediatoryCanvas);
+                    await deepAR.processImage(intermediatoryCanvas);
+                    const image = new Image();
+                    image.id = "pic";
+                    image.src = await deepAR.takeScreenshot();
+                    lastProcessedImage = image;
                 }
             }
-        });
 
-        return async (canvas, ctx) => {
-            intermediatoryCanvasCtx.drawImage(canvas, 0, 0);
-            if(lastProcessedImage){
-                ctx.drawImage(lastProcessedImage, 0, 0, lastProcessedImage.width, lastProcessedImage.height, 0, 0, canvas.width, canvas.height);
-            }
-            await deepAR.processImage(intermediatoryCanvas);
-            await deepAR.processImage(intermediatoryCanvas);
-            await deepAR.processImage(intermediatoryCanvas);
-            const image = new Image();
-            image.id = "pic";
-            image.src = await deepAR.takeScreenshot();
-            lastProcessedImage = image;
+        count++;
+
+        if(count % 2 == 0){
+
+          meeting.self.removeVideoMiddleware(RetroTheme);
+
+        } else {
+          
+          meeting.self.addVideoMiddleware(RetroTheme)
+
         }
-    }
+        }
 
-    meeting.self.addVideoMiddleware(RetroTheme);
+      });
+
+    
+
+    // meeting.self.addVideoMiddleware(RetroTheme);
     document.getElementById('my-meeting').meeting = meeting;
 };
 
