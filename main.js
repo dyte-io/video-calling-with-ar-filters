@@ -7,9 +7,11 @@ const init = async () => {
       },
     });
 
-    meeting.self.on('roomJoined', () => {
-        const btn = document.getElementById('dyte-el');
-        btn.style.visibility = "visible";
+    // meeting.self.on('roomJoined', () => {
+        const btn = document.getElementById('arFilter');
+        // btn.style.visibility = "visible";
+
+        var count = 0;
 
         async function RetroTheme() {
           let lastProcessedImage  = null;
@@ -48,8 +50,6 @@ const init = async () => {
           }
       }
 
-        var count = 0;
-
         btn.addEventListener("click", myFunction)
 
         function myFunction() {
@@ -67,12 +67,21 @@ const init = async () => {
         }
         }
 
-      });
+      // });
 
     
 
     // meeting.self.addVideoMiddleware(RetroTheme);
-    document.getElementById('my-meeting').meeting = meeting;
+    // document.getElementById('my-meeting').meeting = meeting;
+    document.getElementById('meetingTitle').meeting = meeting;
+    document.getElementById('dyteGrid').meeting = meeting;
+    document.getElementById('dyteControlbar').meeting = meeting;
+    document.getElementById('dyteMicToggle').meeting = meeting;
+    document.getElementById('dyteCameraToggle').meeting = meeting;
+    document.getElementById('dyteSettingsToggle').meeting = meeting;
+    document.getElementById('arFilter').meeting = meeting;
+    // document.getElementById('dyte-el8').meeting = meeting;
+    // document.getElementById('dyte-el9').meeting = meeting;
 };
 
 init();

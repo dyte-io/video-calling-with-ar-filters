@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>DeepAR</title>
 
     <script type="module">
@@ -16,19 +17,30 @@
     <script src="https://cdn.jsdelivr.net/npm/deepar/js/deepar.js"> </script>
 </head>
 <body>
-    <dyte-meeting id="my-meeting">
-    
-    </dyte-meeting>
-    <dyte-controlbar size="xl">
-        <dyte-controlbar-button
-            label="AR Filter"
-            icon="😎"
-            size="lg"
-            id="dyte-el"
-            style="visibility: hidden; background-color: white; color: black;"
-        >
-      </dyte-controlbar-button>
-      </dyte-controlbar>
+    <div class="dyte-meeting">
+        <!-- <dyte-header id="dyte-el8"> -->
+          <dyte-meeting-title id="meetingTitle" style="text-align: center;"></dyte-meeting-title>
+        <!-- </dyte-header> -->
+        
+        <dyte-grid id="dyteGrid" style="height: 650px;"></dyte-grid>
+        <div class="controlbar">
+          <dyte-controlbar size="xl" id="dyteControlbar">
+            <dyte-mic-toggle id="dyteMicToggle"></dyte-mic-toggle>
+            <dyte-camera-toggle id="dyteCameraToggle"></dyte-camera-toggle>
+            <dyte-settings-toggle id="dyteSettingsToggle"></dyte-settings-toggle>
+            <!-- <dyte-settings id="dyte-el8" style="display: none;"></dyte-settings> -->
+            <dyte-controlbar-button
+                label="+/-AR Filter"
+                icon="😎"
+                size="lg"
+                id="arFilter"
+                style=" background-color: black; color: white;"
+            >
+          </dyte-controlbar-button>
+          <!-- <dyte-leave-button id="dyte-el7"></dyte-leave-button> -->
+          </dyte-controlbar>
+        </div>
+    </div>
 
     <script src="/main.js"></script>
 </body>
