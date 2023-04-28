@@ -71,16 +71,20 @@ const init = async () => {
 
       // });
 
-      let filterIndex = 0;
-      const filters = ['./effects/lion','./effects/flowers','./effects/dalmatian','./effects/background_segmentation','./effects/background_blur','./effects/aviators'];
+      // let filterIndex = 0;
+      // const filters = ['./effects/lion','./effects/flowers','./effects/dalmatian','./effects/background_segmentation','./effects/background_blur','./effects/aviators'];
       const changeFilterButton = document.getElementById('switchFilter');
       
       changeFilterButton.addEventListener("click", myFunction1)
 
       async function myFunction1() {
-        filterIndex = (filterIndex + 1) % filters.length;
-        await deepAR.switchEffect(filters[filterIndex]);
+        deepAR.clearEffect();
+        // filterIndex = (filterIndex + 1) % filters.length;
+        // await deepAR.switchEffect(filters[filterIndex]);
+        await deepAR.switchEffect('./effects/lion');
       }
+
+      
 
     
 
