@@ -89,9 +89,9 @@ const init = async () => {
         const dyteEndedScreen = document.getElementById('dyteEndedScreen');
         const dyteMeeting = document.getElementById('dyteMeeting');
       
-        dyteLeaveButton.addEventListener("click", myFunction)
+        dyteLeaveButton.addEventListener("click", myFunction2)
       
-          function myFunction() {
+          function myFunction2() {
             meeting.leaveRoom()
       
             dyteEndedScreen.style.display = "block";
@@ -112,7 +112,7 @@ const init = async () => {
     document.getElementById('dyteSettingsToggle').meeting = meeting;
     document.getElementById('arFilter').meeting = meeting;
     document.getElementById('dyteLeaveButton').meeting = meeting;
-    document.getElementById('dyteLeaveMeeting').meeting = meeting;
+    // document.getElementById('dyteLeaveMeeting').meeting = meeting;
     document.getElementById('dyteEndedScreen').meeting = meeting;
 };
 
