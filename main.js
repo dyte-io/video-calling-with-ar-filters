@@ -85,7 +85,18 @@ const init = async () => {
         }
         }
 
-      // });
+        const dyteLeaveButton = document.getElementById('dyteLeaveButton');
+        const dyteEndedScreen = document.getElementById('dyteEndedScreen');
+        const dyteMeeting = document.getElementById('dyteMeeting');
+      
+        dyteLeaveButton.addEventListener("click", myFunction)
+      
+          function myFunction() {
+            meeting.leaveRoom()
+      
+            dyteEndedScreen.style.display = "block";
+            dyteMeeting.style.display = "none";
+          }
 
       
 
@@ -100,8 +111,9 @@ const init = async () => {
     document.getElementById('dyteCameraToggle').meeting = meeting;
     document.getElementById('dyteSettingsToggle').meeting = meeting;
     document.getElementById('arFilter').meeting = meeting;
-    // document.getElementById('dyte-el8').meeting = meeting;
-    // document.getElementById('dyte-el9').meeting = meeting;
+    document.getElementById('dyteLeaveButton').meeting = meeting;
+    document.getElementById('dyteLeaveMeeting').meeting = meeting;
+    document.getElementById('dyteEndedScreen').meeting = meeting;
 };
 
 init();
