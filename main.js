@@ -1,4 +1,4 @@
-import Filter1 from './Free Filters/Burning Effect/burning_effect.deepar'
+// import Filter1 from './Free Filters/Burning Effect/burning_effect.deepar'
 
 const init = async () => {
     const meeting = await DyteClient.init({
