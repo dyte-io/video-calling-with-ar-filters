@@ -48,6 +48,8 @@ const init = async () => {
           async function myFunction1() {
             filterIndex = (filterIndex + 1) % filters.length;
             await deepAR.switchEffect(filters[filterIndex]);
+
+            console.log('Clicked');
           }
   
           return async (canvas, ctx) => {
