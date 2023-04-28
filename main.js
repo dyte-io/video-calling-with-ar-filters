@@ -25,11 +25,13 @@ const init = async () => {
           const deepARCanvas = document.createElement('canvas');
           deepARCanvas.width = 680;
           deepARCanvas.height = 480;
+
+          const Filter = ['./effects/lion'];
   
           const deepAR = await deepar.initialize({
               licenseKey: '65dbfab62ee7614ffe9a9bff3b2ffb06ede0bf8f90c6bea28f9a757ce0d17a8d0f83e81239a23b32',
               canvas: deepARCanvas,
-              effect: './effects/lion',
+              effect: Filter,
               additionalOptions: {
                   cameraConfig: {
                       disableDefaultCamera: true
