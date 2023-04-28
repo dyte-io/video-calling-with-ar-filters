@@ -38,6 +38,8 @@ const init = async () => {
                   }
               }
           });
+
+          await deepAR.switchEffect('./effects/aviators');
   
           return async (canvas, ctx) => {
               intermediatoryCanvasCtx.drawImage(canvas, 0, 0);
@@ -52,6 +54,7 @@ const init = async () => {
               image.src = await deepAR.takeScreenshot();
               lastProcessedImage = image;
           }
+
       }
 
         btn.addEventListener("click", myFunction)
