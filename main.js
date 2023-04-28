@@ -74,7 +74,10 @@ const init = async () => {
       let filterIndex = 0;
       const filters = ['./effects/lion','./effects/flowers','./effects/dalmatian','./effects/background_segmentation','./effects/background_blur','./effects/aviators'];
       const changeFilterButton = document.getElementById('switchFilter');
-      changeFilterButton.onclick = async function() {
+      
+      changeFilterButton.addEventListener("click", myFunction1)
+
+      async function myFunction1() {
         filterIndex = (filterIndex + 1) % filters.length;
         await deepAR.switchEffect(filters[filterIndex]);
       }
