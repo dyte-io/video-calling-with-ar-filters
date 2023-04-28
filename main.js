@@ -71,6 +71,14 @@ const init = async () => {
 
       // });
 
+      let filterIndex = 0;
+      const filters = ['./effects/lion','./effects/flowers','./effects/dalmatian','./effects/background_segmentation','./effects/background_blur','./effects/aviators'];
+      const changeFilterButton = document.getElementById('switchFilter');
+      changeFilterButton.onclick = async function() {
+        filterIndex = (filterIndex + 1) % filters.length;
+        await deepAR.switchEffect(filters[filterIndex]);
+      }
+
     
 
     // meeting.self.addVideoMiddleware(RetroTheme);
