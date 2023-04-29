@@ -10,10 +10,10 @@ const init = async () => {
     });
 
     // meeting.self.on('roomJoined', () => {
-        // const btn = document.getElementById('arFilter');
+        const btn = document.getElementById('arFilter');
         // btn.style.visibility = "visible";
 
-        // var count = 0;
+        var count = 0;
 
         async function RetroTheme() {
           let lastProcessedImage  = null;
@@ -53,12 +53,6 @@ const init = async () => {
           }
   
           return async (canvas, ctx) => {
-
-            if (count % 2 == 0) {
-
-            } else {
-
-
               intermediatoryCanvasCtx.drawImage(canvas, 0, 0);
               if(lastProcessedImage){
                   ctx.drawImage(lastProcessedImage, 0, 0, lastProcessedImage.width, lastProcessedImage.height, 0, 0, canvas.width, canvas.height);
@@ -70,36 +64,26 @@ const init = async () => {
               image.id = "pic";
               image.src = await deepAR.takeScreenshot();
               lastProcessedImage = image;
-
-            }
           }
 
       }
 
-      var count = 0;
+        btn.addEventListener("click", myFunction)
 
-      const btn = document.getElementById('arFilter');
-        
-        btn.addEventListener("click", function() {
-            count++;
-        });
+        function myFunction() {
 
-        // btn.addEventListener("click", myFunction)
+        count++;
 
-        // function myFunction() {
+        if(count % 2 == 0){
 
-        // count++;
+          meeting.self.removeVideoMiddleware(RetroTheme);
 
-        // if(count % 2 == 0){
-
-        //   meeting.self.removeVideoMiddleware(RetroTheme);
-
-        // } else {
+        } else {
           
-        //   meeting.self.addVideoMiddleware(RetroTheme)
+          meeting.self.addVideoMiddleware(RetroTheme)
 
-        // }
-        // }
+        }
+        }
 
         const dyteLeaveButton = document.getElementById('dyteLeaveButton');
         const dyteEndedScreen = document.getElementById('dyteEndedScreen');
