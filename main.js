@@ -68,8 +68,8 @@ const init = async () => {
           canvas.height
         );
       }
-      await deepAR.processImage(intermediatoryCanvas);
-      await deepAR.processImage(intermediatoryCanvas);
+      // await deepAR.processImage(intermediatoryCanvas);
+      // await deepAR.processImage(intermediatoryCanvas);
       await deepAR.processImage(intermediatoryCanvas);
       const image = new Image();
       image.id = "pic";
