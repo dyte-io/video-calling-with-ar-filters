@@ -16,7 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/deepar/js/deepar.js"></script>
   </head>
   <body>
-    <div class="dyte-meeting" id="dyteMeeting">
+    <!-- <div class="dyte-meeting" id="dyteMeeting">
       <dyte-meeting-title
         id="meetingTitle"
         style="text-align: center"></dyte-meeting-title>
@@ -51,7 +51,25 @@
         height: 100%;
         display: none;
         background-color: black;
-      "></dyte-ended-screen>
+      "></dyte-ended-screen> -->
+    <dyte-meeting id="my-meeting"></dyte-meeting>
+    <div class="controlbar" id="controlbar">
+      <dyte-controlbar-button
+        class="btn"
+        label="+/-AR Filter"
+        icon="😎"
+        size="lg"
+        id="arFilter"
+        style="background-color: #151515; color: white">
+      </dyte-controlbar-button>
+      <dyte-controlbar-button
+        label="Change ARFilter"
+        icon="🔄"
+        size="lg"
+        id="switchFilter"
+        style="background-color: #151515; color: white">
+      </dyte-controlbar-button>
+    </div>
 
     <script src="/main.js"></script>
   </body>

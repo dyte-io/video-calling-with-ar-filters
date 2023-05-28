@@ -9,6 +9,7 @@ const init = async () => {
   });
 
   const btn = document.getElementById("arFilter");
+  const controlBar = document.getElementById("controlbar");
 
   var count = 0;
 
@@ -70,8 +71,7 @@ const init = async () => {
           canvas.height
         );
       }
-      // await deepAR.processImage(intermediatoryCanvas);
-      // await deepAR.processImage(intermediatoryCanvas);
+
       await deepAR.processImage(intermediatoryCanvas);
       const image = new Image();
       image.id = "pic";
@@ -92,28 +92,11 @@ const init = async () => {
     }
   }
 
-  const dyteLeaveButton = document.getElementById("dyteLeaveButton");
-  const dyteEndedScreen = document.getElementById("dyteEndedScreen");
-  const dyteMeeting = document.getElementById("dyteMeeting");
+  meeting.self.on("roomJoined", () => {
+    controlBar.style.display = "block";
+  });
 
-  dyteLeaveButton.addEventListener("click", myFunction2);
-
-  function myFunction2() {
-    meeting.leaveRoom();
-
-    dyteEndedScreen.style.display = "block";
-    dyteMeeting.style.display = "none";
-  }
-
-  document.getElementById("meetingTitle").meeting = meeting;
-  document.getElementById("dyteGrid").meeting = meeting;
-  document.getElementById("dyteControlbar").meeting = meeting;
-  document.getElementById("dyteMicToggle").meeting = meeting;
-  document.getElementById("dyteCameraToggle").meeting = meeting;
-  document.getElementById("dyteSettingsToggle").meeting = meeting;
-  document.getElementById("arFilter").meeting = meeting;
-  document.getElementById("dyteLeaveButton").meeting = meeting;
-  document.getElementById("dyteEndedScreen").meeting = meeting;
+  document.getElementById("my-meeting").meeting = meeting;
 };
 
 init();

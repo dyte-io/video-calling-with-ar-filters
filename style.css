@@ -30,3 +30,15 @@ body {
 .active-button {
   color: red;
 }
+
+.main {
+  position: relative;
+}
+
+.controlbar {
+  margin-top: 43.5rem;
+  margin-left: 58rem;
+  display: none;
+  /* position: sticky; */
+  /* float: right; */
+}
