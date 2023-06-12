@@ -1,3 +1,5 @@
+import icons from './icons.json';
+
 const init = async () => {
   // Initialize Dyte Meeting
   const meeting = await DyteClient.init({
@@ -38,6 +40,9 @@ const init = async () => {
 
   const AddFilter = document.getElementById("arFilter");
   const SwitchFilter = document.getElementById("switchFilter");
+
+  AddFilter.icon = icons.addFilter;
+  SwitchFilter.icon = icons.switchFilter;
 
   AddFilter.addEventListener("click", toggleAR);
   SwitchFilter.addEventListener("click", filterChangeHandler);
