@@ -16,63 +16,46 @@
     <script src="https://cdn.jsdelivr.net/npm/deepar/js/deepar.js"></script>
   </head>
   <body>
-    <!-- <div class="dyte-meeting" id="dyteMeeting">
-      <dyte-meeting-title
-        id="meetingTitle"
-        style="text-align: center"></dyte-meeting-title>
-
-      <dyte-grid id="dyteGrid" style="height: 650px"></dyte-grid>
-      <div class="controlbar">
-        <dyte-controlbar size="xl" id="dyteControlbar">
-          <dyte-mic-toggle id="dyteMicToggle"></dyte-mic-toggle>
-          <dyte-camera-toggle id="dyteCameraToggle"></dyte-camera-toggle>
-          <dyte-settings-toggle id="dyteSettingsToggle"></dyte-settings-toggle>
+    <div id="app">
+      <dyte-dialog-manager class="dyte"></dyte-dialog-manager>
+      <dyte-participants-audio class="dyte"></dyte-participants-audio>
+      <dyte-notifications class="dyte"></dyte-notifications>
+      <dyte-header class="dyte"></dyte-header>
+      <div class="dyte-grid">
+        <dyte-grid class="dyte"></dyte-grid>
+        <dyte-sidebar class="dyte" default-section="none">
+        </dyte-sidebar>
+      </div>
+      <div class="dyte-controlbar">
+        <div class="controlbar-section">
+          <dyte-settings-toggle class="dyte"></dyte-settings-toggle>
+        </div>
+        <div class="controlbar-section">
+          <dyte-mic-toggle class="dyte"></dyte-mic-toggle>
+          <dyte-camera-toggle class="dyte"></dyte-camera-toggle>
+          <dyte-leave-button class="dyte"></dyte-leave-button>
           <dyte-controlbar-button
-            label="+/-AR Filter"
-            icon="😎"
+            label="Add Filter"
+            icon="<svg fill='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M6 16.938v2.121L5.059 20h-2.12L6 16.938Zm16.002-2.503v2.122L18.56 20h-.566v-1.557l4.008-4.008ZM8.75 14h6.495a1.75 1.75 0 0 1 1.744 1.607l.006.143V20H7v-4.25a1.75 1.75 0 0 1 1.606-1.744L8.75 14Zm-.729-3.584c.06.579.243 1.12.523 1.6L2 18.56v-2.122l6.021-6.022Zm13.98-.484v2.123l-4.007 4.01v-.315l-.004-.168a2.734 2.734 0 0 0-.387-1.247l4.399-4.403ZM12.058 4 2 14.06v-2.121L9.936 4h2.12Zm9.945 1.432v2.123l-5.667 5.67a2.731 2.731 0 0 0-.86-.216l-.23-.009h-.6a4.02 4.02 0 0 0 .855-1.062l6.502-6.506ZM12 7a3 3 0 1 1 0 6 3 3 0 0 1 0-6ZM7.559 4l-5.56 5.56V7.438L5.439 4h2.12Zm13.498 0-5.148 5.149a3.98 3.98 0 0 0-.652-1.47L18.935 4h2.122Zm-4.498 0-2.544 2.544a3.974 3.974 0 0 0-1.6-.522L14.438 4h2.122Z' fill='currentColor'/></svg>"
             size="lg"
             id="arFilter"
             style="background-color: black; color: white">
           </dyte-controlbar-button>
           <dyte-controlbar-button
-            label="Change ARFilter"
-            icon="🔄"
+            label="Change Filter"
+            icon="<svg fill='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M9.5 2a7.503 7.503 0 0 1 7.179 5.321 7.5 7.5 0 1 1-9.357 9.358A7.5 7.5 0 0 1 9.5 2Zm7.498 7.599L17 9.5A7.5 7.5 0 0 1 9.6 17a5.5 5.5 0 1 0 7.399-7.4ZM9.5 4a5.5 5.5 0 0 0-2.498 10.401L7 14.5A7.5 7.5 0 0 1 14.4 7a5.497 5.497 0 0 0-4.9-3Z' fill='currentColor'/></svg>"
             size="lg"
             id="switchFilter"
             style="background-color: black; color: white">
           </dyte-controlbar-button>
-          <dyte-leave-button id="dyteLeaveButton"></dyte-leave-button>
-        </dyte-controlbar>
+        </div>
+        <div class="controlbar-section">
+          <dyte-chat-toggle class="dyte"></dyte-chat-toggle>
+          <dyte-participants-toggle class="dyte"></dyte-participants-toggle>
+          <dyte-polls-toggle class="dyte"></dyte-polls-toggle>
+        </div>
       </div>
     </div>
-    <dyte-ended-screen
-      id="dyteEndedScreen"
-      style="
-        height: 100%;
-        display: none;
-        background-color: black;
-      "></dyte-ended-screen> -->
-    <div class="main">
-      <dyte-meeting id="my-meeting"></dyte-meeting>
-      <div class="controlbar" id="controlbar">
-        <dyte-controlbar-button
-          class="btn"
-          label="+/-AR Filter"
-          icon="😎"
-          size="lg"
-          id="arFilter"
-          style="background-color: #151515; color: white">
-        </dyte-controlbar-button>
-        <dyte-controlbar-button
-          label="Change ARFilter"
-          icon="🔄"
-          size="lg"
-          id="switchFilter"
-          style="background-color: #151515; color: white">
-        </dyte-controlbar-button>
-      </div>
-    </div>
-
-    <script src="/main.js"></script>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
