@@ -1,14 +1,44 @@
 import icons from './icons.json';
 
 const init = async () => {
+  const {
+    VITE_API_BASE,
+    VITE_MEETING_ID,
+    VITE_AUTH_HEADER,
+    VITE_DEEP_AR_TOKEN
+  } = import.meta.env;
+
+
+  // Add a participant
+  // NOTE: this API should ideally be called in your app's backend.
+  const ID = genID();
+  const response = await fetch(`${VITE_API_BASE}/v2/meetings/${VITE_MEETING_ID}/participants`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Basic ${VITE_AUTH_HEADER}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      client_specific_id: ID,
+      name: ID,
+      preset_name: 'group_call_host',
+    }),
+  });
+
+  if (!response.ok) return;
+  const { data } = await response.json();
+
+
   // Initialize Dyte Meeting
   const meeting = await DyteClient.init({
-    authToken: import.meta.env.VITE_AUTH_TOKEN,
+    authToken: data.token,
     defaults: {
       audio: false,
       video: false,
     },
   });
+  meeting.joinRoom();
   passMeetingProp(meeting);
 
   // Initialize Deep AR
@@ -25,7 +55,7 @@ const init = async () => {
   deepARCanvas.width = 680;
   deepARCanvas.height = 480;
   const deepAR = await deepar.initialize({
-    licenseKey: import.meta.env.VITE_DEEP_AR_TOKEN,
+    licenseKey: VITE_DEEP_AR_TOKEN,
     canvas: deepARCanvas,
     effect: filters[0],
     additionalOptions: {
@@ -40,7 +70,6 @@ const init = async () => {
 
   const AddFilter = document.getElementById("arFilter");
   const SwitchFilter = document.getElementById("switchFilter");
-
   AddFilter.icon = icons.addFilter;
   SwitchFilter.icon = icons.switchFilter;
 
@@ -95,10 +124,16 @@ init();
 
 function passMeetingProp(meeting) {
   const els = document.getElementsByClassName('dyte');
-  els[0].config = meeting.self.config;
   for (const el of els) {
     el.meeting = meeting;
   }
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+}
+
+function genID() {
+  const ID = Math.random().toString(36).substring(2,7);
+  return ID;
 }
 
 // Manage Sidebar States
