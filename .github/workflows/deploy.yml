@@ -1,0 +1,30 @@
+name: Deploy Plugin on Prod
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with: 
+          node-version: '18'
+      - name: Install Packages
+        run: npm install
+      - name: Write .env from github secrets
+        run: echo "$DOT_ENV" | base64 -d > .env
+        env:
+          DOT_ENV: ${{ secrets.DOT_ENV }}
+      - name: Build page
+        run: |
+          export GENERATE_SOURCEMAP=false
+          npm run build
+      - name: Deploy to github.io
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: dist
