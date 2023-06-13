@@ -22,7 +22,8 @@ jobs:
       - name: Build page
         run: |
           export GENERATE_SOURCEMAP=false
-          npm run build
+          BASE_NAME=$(basename `git rev-parse --show-toplevel`)
+          npm run build -- --base $BASE_NAME
       - name: Deploy to github.io
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
