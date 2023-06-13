@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>DeepAR</title>
+    
+    <script src="https://cdn.dyte.in/core/dyte-1.14.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/deepar/js/deepar.js"></script>
+    <script type="module" crossorigin src="/assets/index-b67c2a77.js"></script>
+    <link rel="stylesheet" href="/assets/index-f6aaf252.css">
+  </head>
+  <body>
+    <div id="loader">Loading your meeting...</div>
+    <div id="app">
+      <dyte-dialog-manager class="dyte"></dyte-dialog-manager>
+      <dyte-participants-audio class="dyte"></dyte-participants-audio>
+      <dyte-notifications class="dyte"></dyte-notifications>
+      <dyte-header class="dyte"></dyte-header>
+      <div class="dyte-grid">
+        <dyte-grid class="dyte"></dyte-grid>
+        <dyte-sidebar class="dyte" default-section="none">
+        </dyte-sidebar>
+      </div>
+      <div class="dyte-controlbar">
+        <div class="controlbar-section">
+          <dyte-settings-toggle class="dyte"></dyte-settings-toggle>
+        </div>
+        <div class="controlbar-section">
+          <dyte-mic-toggle class="dyte"></dyte-mic-toggle>
+          <dyte-camera-toggle class="dyte"></dyte-camera-toggle>
+          <dyte-leave-button class="dyte"></dyte-leave-button>
+          <dyte-controlbar-button
+            label="Add Filter"
+            size="lg"
+            id="arFilter"
+            style="background-color: black; color: white">
+          </dyte-controlbar-button>
+          <dyte-controlbar-button
+            label="Change Filter"
+            size="lg"
+            id="switchFilter"
+            style="background-color: black; color: white">
+          </dyte-controlbar-button>
+        </div>
+        <div class="controlbar-section">
+          <dyte-chat-toggle class="dyte"></dyte-chat-toggle>
+          <dyte-participants-toggle class="dyte"></dyte-participants-toggle>
+          <dyte-polls-toggle class="dyte"></dyte-polls-toggle>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+</html>
